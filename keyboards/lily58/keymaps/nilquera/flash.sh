@@ -1,0 +1,1 @@
+qmk flash -kb lily58 -km nilquera
