@@ -46,3 +46,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_LED_COUNT 14    // Number of LEDs
 #define RGBLIGHT_SLEEP
 */
+
+/*
+pretend it's a mac keyboard
+*/
+#undef VENDOR_ID
+#undef PRODUCT_ID
+#define VENDOR_ID    0x05AC
+#define PRODUCT_ID   0x0221
