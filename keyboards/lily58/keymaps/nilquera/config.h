@@ -1,7 +1,5 @@
 /*
 This is the c configuration file for the keymap
-
-Copyright 2012 Jun Wako <wakojun@gmail.com>
 Copyright 2015 Jack Humbert
 
 This program is free software: you can redistribute it and/or modify
@@ -48,7 +46,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 /*
-pretend it's a mac keyboard
+When clicking FX keys and if you have mac configured so that those keys automatically trigger the printed behavior (brightness, volume, etc.), mac will only apply this mapping if you're on the laptop keyboard. These next lines make the external keyboard pretend it's the mac keyboard as well so that these mappings also apply.
 */
 #undef VENDOR_ID
 #undef PRODUCT_ID

@@ -10,63 +10,21 @@ enum layer_number {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-/* QWERTY
- * ,-----------------------------------------.                    ,-----------------------------------------.
- * | ESC  |  1   |  2   |  3   |  4   |  5   |                    |  6   |  7   |  8   |  9   |  0   |  '   |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | Tab  |  Q   |  W   |  E   |  R   |  T   |                    |  Y   |  U   |  I   |  O   |  P   |  `   |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |LShift|  A   |  S   |  D   |  F   |  G   |-------.    ,-------|  H   |  J   |  K   |  L   |  Ñ   |  ´   |
- * |------+------+------+------+------+------|   {   |    |    }  |------+------+------+------+------+------|
- * |LCTRL |  Z   |  X   |  C   |  V   |  B   |-------|    |-------|  N   |  M   |  ,   |  .   |  /   |RShift|
- * `-----------------------------------------/       /     \      \-----------------------------------------'
- *                   | LAlt | LGUI | LOWER| / Space /       \ Enter \  | RAISE|BackSP| RGUI  |
- *                   |      |      |      |/       /         \       \ |      |      |       |
- *                   `----------------------------'           '-------''----------------------'
- */
-
- [_QWERTY] = LAYOUT(
+[_QWERTY] = LAYOUT(
   QK_GESC,  KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    ES_QUOT,
   KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    ES_GRV,
   KC_LSFT,  KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L,    ES_NTIL, ES_ACUT,
   KC_LCTL,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, ES_LCBR,  ES_RCBR,  KC_N,    KC_M,    ES_COMM, ES_DOT,  ES_MINS,  KC_RSFT,
                         KC_LALT, KC_LGUI, MO(_LOWER), KC_SPC, KC_ENT, MO(_RAISE), KC_BSPC, KC_RGUI
 ),
-/* LOWER
- * ,----------------------------------------------------------------.                    ,-----------------------------------------.
- * |      |         |         |         |         |                 |                    |      |  \   |      |      |      |      |
- * |------+---------+---------+---------+---------+-----------------|                    |------+------+------+------+------+------|
- * |      | LGUI(Y) | LGUI(U) | LGUI(I) | LGUI(O) | LCTL(LSFT(TAB)) |                    |      |      |      |      |      |  +   |
- * |------+---------+---------+---------+---------+-----------------|                    |------+------+------+------+------+------|
- * | CAPS | LGUI(H) | LGUI(J) | LGUI(K) | LGUI(L) | LCTL(TAB)       |--------.   ,-------|      |      |      |      |      |  Ç   |
- * |------+---------+---------+---------+---------+-----------------|   [    |   |    ]  |------+------+------+------+------+------|
- * |      |         |         |         |         |                 |-------|    |-------|      |      |      |     |      |      |
- * `---------------------------------------------------------------/       /     \      \-----------------------------------------'
- *                       |  LAlt   |     LGUI   |    LOWER      | / Space /       \ Enter \  | RAISE|BackSP| RGUI  |
- *                       |         |            |               |/       /         \       \ |      |      |       |
- *                       `----------------------------------------------'           '-------''----------------------'
- */
+
 [_LOWER] = LAYOUT(
-  XXXXXXX, XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,                   XXXXXXX, ES_BSLS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX, LCAG(KC_1), LCAG(KC_2), LCAG(KC_3), LCAG(KC_4), LCAG(KC_5),                   XXXXXXX, ES_BSLS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, LCAG(KC_Q), LCAG(KC_W), LCAG(KC_E), LCAG(KC_R), LCTL(LSFT(KC_TAB)),        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, ES_PLUS,
   KC_CAPS, LCAG(KC_A), LCAG(KC_S), LCAG(KC_D), LCAG(KC_F), LCTL(KC_TAB),              LCAG(KC_H), LCAG(KC_J), LCAG(KC_K), LCAG(KC_L), XXXXXXX, ES_CCED,
-  XXXXXXX, LCAG(KC_X), XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX, ES_LBRC, ES_RBRC, XXXXXXX, XXXXXXX, LCAG(ES_COMM), LCAG(ES_DOT), XXXXXXX, XXXXXXX,
+  XXXXXXX, LCAG(KC_Z), LCAG(KC_X), LCAG(KC_C), LCAG(KC_V), LCAG(KC_B), ES_LBRC, ES_RBRC, XXXXXXX, XXXXXXX, LCAG(ES_COMM), LCAG(ES_DOT), XXXXXXX, XXXXXXX,
                                    XXXXXXX,    XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 ),
-/* RAISE
- * ,-----------------------------------------.                    ,-----------------------------------------.
- * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |-------.    ,-------| Left | Down |  Up  |Right |      |      |
- * |------+------+------+------+------+------|   <   |    |   >   |------+------+------+------+------+------|
- * |  F7  |  F8  |  F9  | F10  | F11  | F12  |-------|    |-------|      |      |      |      |      |      |
- * `-----------------------------------------/       /     \      \-----------------------------------------'
- *                   | LAlt | LGUI | LOWER| / Space /       \ Enter \  | RAISE|BackSP| RGUI  |
- *                   |      |      |      |/       /         \       \ |      |      |       |
- *                   `----------------------------'           '-------''----------------------'
- */
 
 [_RAISE] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
@@ -75,21 +33,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,   ES_LABK, ES_RABK,  KC_PLUS, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,
                              XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX
 ),
-/* ADJUST
- * ,-----------------------------------------.                    ,-----------------------------------------.
- * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |      |      |      |-------.    ,-------|      |      |RGB ON| HUE+ | SAT+ | VAL+ |
- * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
- * |      |      |      |      |      |      |-------|    |-------|      |      | MODE | HUE- | SAT- | VAL- |
- * `-----------------------------------------/       /     \      \-----------------------------------------'
- *                   | LAlt | LGUI |LOWER | /Space  /       \Enter \  |RAISE |BackSP| RGUI |
- *                   |      |      |      |/       /         \      \ |      |      |      |
- *                   `----------------------------'           '------''--------------------'
- */
-  [_ADJUST] = LAYOUT(
+
+[_ADJUST] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
